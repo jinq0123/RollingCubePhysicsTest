@@ -121,7 +121,6 @@ GameObject:
   m_Component:
   - component: {fileID: 351519560}
   - component: {fileID: 351519563}
-  - component: {fileID: 351519562}
   - component: {fileID: 351519561}
   m_Layer: 0
   m_Name: BluePositive
@@ -177,20 +176,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &351519562
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 351519559}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &351519563
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -207,7 +192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 775242876}
   - component: {fileID: 775242879}
-  - component: {fileID: 775242878}
   - component: {fileID: 775242877}
   m_Layer: 0
   m_Name: RedPositive
@@ -263,20 +247,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &775242878
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 775242875}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &775242879
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -293,7 +263,6 @@ GameObject:
   m_Component:
   - component: {fileID: 793644119}
   - component: {fileID: 793644122}
-  - component: {fileID: 793644121}
   - component: {fileID: 793644120}
   m_Layer: 0
   m_Name: GreenPositive
@@ -349,20 +318,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &793644121
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 793644118}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &793644122
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -465,7 +420,6 @@ GameObject:
   m_Component:
   - component: {fileID: 949228686}
   - component: {fileID: 949228689}
-  - component: {fileID: 949228688}
   - component: {fileID: 949228687}
   m_Layer: 0
   m_Name: RedNegative
@@ -521,20 +475,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &949228688
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 949228685}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &949228689
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -636,7 +576,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1192604461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.51, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -753,7 +693,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1414262886}
   - component: {fileID: 1414262889}
-  - component: {fileID: 1414262888}
   - component: {fileID: 1414262887}
   m_Layer: 0
   m_Name: GreenNegative
@@ -809,20 +748,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1414262888
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1414262885}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1414262889
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -904,7 +829,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1753226068}
   - component: {fileID: 1753226071}
-  - component: {fileID: 1753226070}
   - component: {fileID: 1753226069}
   m_Layer: 0
   m_Name: BlueNegative
@@ -960,20 +884,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1753226070
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753226067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1753226071
 MeshFilter:
   m_ObjectHideFlags: 0
