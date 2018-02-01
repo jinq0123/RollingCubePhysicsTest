@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Roller : MonoBehaviour {
-	public bool isServer = false;  // Is server roller?
-	public bool isRed = false;  // Red or blue?
+	public bool isServer;  // Is server roller?
+	public bool isRedClient;  // Is red client? Red client has a blue roller.
+	public bool isRedRoller;  // Is roller red or blue?
 	public new Rigidbody rigidbody;  // of roller cube
 
 	private float rollThrust = 200.0f;
@@ -12,7 +13,7 @@ public class Roller : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		GetComponent<Renderer>().material.color =
-			isRed ? Global.redColor : Global.blueColor;
+			isRedRoller ? Global.redColor : Global.blueColor;
 	}
 
 	void FixedUpdate() {
@@ -53,10 +54,15 @@ public class Roller : MonoBehaviour {
 	{
 		if (isServer)
 		{
-			if (isRed) return Global.server.ctrlStateRed;
+			if (isRedRoller) return Global.server.ctrlStateRed;
 			return Global.server.ctrlStateBlue;
 		}
-		if (isRed) return Global.redClient.ctrlStateRed;
+		if (isRedClient)
+		{
+			if (isRedRoller) return Global.redClient.ctrlStateRed;
+			return Global.redClient.ctrlStateBlue;
+		}
+		if (isRedRoller) return Global.blueClient.ctrlStateRed;
 		return Global.blueClient.ctrlStateBlue;
 	}
 }
