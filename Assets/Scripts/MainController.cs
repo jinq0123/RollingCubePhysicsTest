@@ -29,11 +29,10 @@ public class MainController : MonoBehaviour {
 	{
 		int width = 30;
 		for (int i = 0; i < width; i++)
-		{
 			for (int j = 0; j < width; j++)
-			{
-				Instantiate(cubePrefab, new Vector3(i - width / 2f, 0.2501f, j - width / 2f), Quaternion.identity);
-			}
-		}
+				for (int x = -100; x <= 100; x = x + 100)
+					Instantiate(cubePrefab, new Vector3(
+						x + i - width / 2f, 0.2501f, j - width / 2f),
+						Quaternion.identity);
 	}
 }
