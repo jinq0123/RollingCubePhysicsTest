@@ -24,9 +24,28 @@ public class MainController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	//void Update () {
-		
-	//}
+	void Update () {
+		Client clt;
+		clt = Global.redClient;
+		if (Input.GetKeyDown(KeyCode.A)) clt.IsLeft = true;
+		if (Input.GetKeyUp(KeyCode.A)) clt.IsLeft = false;
+		if (Input.GetKeyDown(KeyCode.D)) clt.IsRight = true;
+		if (Input.GetKeyUp(KeyCode.D)) clt.IsRight = false;
+		if (Input.GetKeyDown(KeyCode.W)) clt.IsUp = true;
+		if (Input.GetKeyUp(KeyCode.W)) clt.IsUp = false;
+		if (Input.GetKeyDown(KeyCode.S)) clt.IsDown = true;
+		if (Input.GetKeyUp(KeyCode.S)) clt.IsDown = false;
+
+		clt = Global.blueClient;
+		if (Input.GetKeyDown(KeyCode.LeftArrow)) clt.IsLeft = true;
+		if (Input.GetKeyUp(KeyCode.LeftArrow)) clt.IsLeft = false;
+		if (Input.GetKeyDown(KeyCode.RightArrow)) clt.IsRight = true;
+		if (Input.GetKeyUp(KeyCode.RightArrow)) clt.IsRight = false;
+		if (Input.GetKeyDown(KeyCode.UpArrow)) clt.IsUp = true;
+		if (Input.GetKeyUp(KeyCode.UpArrow)) clt.IsUp = false;
+		if (Input.GetKeyDown(KeyCode.DownArrow)) clt.IsDown = true;
+		if (Input.GetKeyUp(KeyCode.DownArrow)) clt.IsDown = false;
+	}
 
 	void InstantiateCubes()
 	{

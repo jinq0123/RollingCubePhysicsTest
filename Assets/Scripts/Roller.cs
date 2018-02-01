@@ -15,24 +15,17 @@ public class Roller : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (Input.GetKey(KeyCode.A))
-		{
-			rigidbody.AddTorque(Vector3.forward * rollThrust);
-		}
-		if (Input.GetKey(KeyCode.D))
-		{
-			rigidbody.AddTorque(-Vector3.forward * rollThrust);
-		}
-		if (Input.GetKey(KeyCode.W))
-		{
-			rigidbody.AddTorque(Vector3.right * rollThrust);
-		}
-		if (Input.GetKey(KeyCode.S))
-		{
-			rigidbody.AddTorque(-Vector3.right * rollThrust);
-		}
-
 		Attract();
+
+		Client clt = isRed ? Global.redClient : Global.blueClient;
+		if (clt.IsLeft)
+			rigidbody.AddTorque(Vector3.forward * rollThrust);
+		if (clt.IsRight)
+			rigidbody.AddTorque(-Vector3.forward * rollThrust);
+		if (clt.IsUp)
+			rigidbody.AddTorque(Vector3.right * rollThrust);
+		if (clt.IsDown)
+			rigidbody.AddTorque(-Vector3.right * rollThrust);
 	}
 
 	void Attract()

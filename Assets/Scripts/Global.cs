@@ -7,4 +7,7 @@ public class Global {
 	public static Color redColor = Color.red;
 	public static Color blueColor = Color.cyan;
 	public static Color normalColor = Color.white;
+
+	public static Client redClient = new Client(true);
+	public static Client blueClient = new Client(false);
 }
