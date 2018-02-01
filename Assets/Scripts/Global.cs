@@ -8,6 +8,13 @@ public class Global {
 	public static Color blueColor = Color.cyan;
 	public static Color normalColor = Color.white;
 
-	public static Client redClient = new Client(true);
-	public static Client blueClient = new Client(false);
+	private static ChannelC2s chRed2Svr = new ChannelC2s();
+	private static ChannelS2c chSvr2Red = new ChannelS2c();
+	private static ChannelC2s chBlue2Svr = new ChannelC2s();
+	private static ChannelS2c chSvr2Blue = new ChannelS2c();
+
+	public static Client redClient = new Client(true, chRed2Svr, chSvr2Red);
+	public static Client blueClient = new Client(false, chBlue2Svr, chSvr2Blue);
+
+	public static Server server = new Server(chRed2Svr, chSvr2Red, chBlue2Svr, chSvr2Blue);
 }
