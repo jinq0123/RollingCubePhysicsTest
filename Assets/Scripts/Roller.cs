@@ -33,33 +33,10 @@ public class Roller : MonoBehaviour {
 			rigidbody.AddTorque(-Vector3.right * rollThrust);
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			ExplodeUp();
-		}
-
-		// Absorb();
+		Attract();
 	}
 
-	void ExplodeUp()
-	{
-		float radius = 5.0F;
-
-		Vector3 explosionPos = transform.position;
-		explosionPos.y = 0;
-		Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
-		foreach (Collider hit in colliders)
-		{
-			Rigidbody rb = hit.GetComponent<Rigidbody>();
-
-			if (rb != null)
-			{
-				rb.AddExplosionForce(jumpPower, explosionPos, radius, 3.0F);
-			}
-		}
-	}
-
-	void Absorb()
+	void Attract()
 	{
 		float radius = transform.localScale.x * 0.75f;
 		Vector3 c = transform.position;
@@ -75,5 +52,4 @@ public class Roller : MonoBehaviour {
 			}
 		}
 	}
-
 }

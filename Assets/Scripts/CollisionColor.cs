@@ -20,14 +20,11 @@ public class CollisionColor : MonoBehaviour
 		Material myMaterial = GetComponent<Renderer>().material;
 		Color myColor = myMaterial.color;
 		if (myColor == Global.redColor || myColor == Global.blueColor)
-			return;
+			return;  // Keep.
 
 		Color hitColor = GetColorOf(collision.gameObject);
-		if (hitColor != Global.redColor &&
-			hitColor != Global.blueColor)
-		{
+		if (hitColor != Global.redColor && hitColor != Global.blueColor)
 			return;  // hit by ground or normal cube
-		}
 
 		// Change color to hit object.
 		myMaterial.color = hitColor;
@@ -36,7 +33,7 @@ public class CollisionColor : MonoBehaviour
 	}
 
 	// Get color of hit object.
-	Color GetColorOf(GameObject hitObj)
+	private Color GetColorOf(GameObject hitObj)
 	{
 		string name = hitObj.name;
 		if (name == "RollerRed")
