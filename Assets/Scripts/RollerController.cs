@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // To control the roller.
-public class RollerCtrlState {
+public class RollerController {
 	private bool isLeft;
 	private bool isRight;
 	private bool isUp;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Init the scene and get user input.
 public class MainController : MonoBehaviour {
 	public Camera serverCamera;
 	public Camera redClientCamera;
@@ -25,29 +26,27 @@ public class MainController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		RollerCtrlState clt;
-
 		// ASDW keys controls red client.
-		clt = Global.redClient.ctrlStateRed;
-		if (Input.GetKeyDown(KeyCode.A)) clt.IsLeft = true;
-		if (Input.GetKeyUp(KeyCode.A)) clt.IsLeft = false;
-		if (Input.GetKeyDown(KeyCode.D)) clt.IsRight = true;
-		if (Input.GetKeyUp(KeyCode.D)) clt.IsRight = false;
-		if (Input.GetKeyDown(KeyCode.W)) clt.IsUp = true;
-		if (Input.GetKeyUp(KeyCode.W)) clt.IsUp = false;
-		if (Input.GetKeyDown(KeyCode.S)) clt.IsDown = true;
-		if (Input.GetKeyUp(KeyCode.S)) clt.IsDown = false;
+		Client red = Global.redClient;
+		if (Input.GetKeyDown(KeyCode.A)) red.Left(true);
+		if (Input.GetKeyUp(KeyCode.A)) red.Left(false);
+		if (Input.GetKeyDown(KeyCode.D)) red.Right(true);
+		if (Input.GetKeyUp(KeyCode.D)) red.Right(false);
+		if (Input.GetKeyDown(KeyCode.W)) red.Up(true);
+		if (Input.GetKeyUp(KeyCode.W)) red.Up(false);
+		if (Input.GetKeyDown(KeyCode.S)) red.Down(true);
+		if (Input.GetKeyUp(KeyCode.S)) red.Down(false);
 
 		// Arrow keys controls blue client.
-		clt = Global.blueClient.ctrlStateBlue;
-		if (Input.GetKeyDown(KeyCode.LeftArrow)) clt.IsLeft = true;
-		if (Input.GetKeyUp(KeyCode.LeftArrow)) clt.IsLeft = false;
-		if (Input.GetKeyDown(KeyCode.RightArrow)) clt.IsRight = true;
-		if (Input.GetKeyUp(KeyCode.RightArrow)) clt.IsRight = false;
-		if (Input.GetKeyDown(KeyCode.UpArrow)) clt.IsUp = true;
-		if (Input.GetKeyUp(KeyCode.UpArrow)) clt.IsUp = false;
-		if (Input.GetKeyDown(KeyCode.DownArrow)) clt.IsDown = true;
-		if (Input.GetKeyUp(KeyCode.DownArrow)) clt.IsDown = false;
+		Client blue = Global.blueClient;
+		if (Input.GetKeyDown(KeyCode.LeftArrow)) blue.Left(true);
+		if (Input.GetKeyUp(KeyCode.LeftArrow)) blue.Left(false);
+		if (Input.GetKeyDown(KeyCode.RightArrow)) blue.Right(true);
+		if (Input.GetKeyUp(KeyCode.RightArrow)) blue.Right(false);
+		if (Input.GetKeyDown(KeyCode.UpArrow)) blue.Up(true);
+		if (Input.GetKeyUp(KeyCode.UpArrow)) blue.Up(false);
+		if (Input.GetKeyDown(KeyCode.DownArrow)) blue.Down(true);
+		if (Input.GetKeyUp(KeyCode.DownArrow)) blue.Down(false);
 	}
 
 	void InstantiateCubes()
@@ -55,7 +54,7 @@ public class MainController : MonoBehaviour {
 		int width = 30;
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < width; j++)
-				for (int x = -100; x <= 100; x = x + 100)
+				for (int x = -100; x <= 100; x = x + 100)  // plane.x
 					Instantiate(cubePrefab, new Vector3(
 						x + i - width / 2f, 0.2501f, j - width / 2f),
 						Quaternion.identity);

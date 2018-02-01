@@ -5,7 +5,10 @@ using UnityEngine;
 // Simulate the delay between client and server.
 public class Channel
 {
-
+	public void SendControlCode(ControlCode code, bool yes)
+	{
+		// XXX
+	}
 }
 
 public class ChannelS2c : Channel

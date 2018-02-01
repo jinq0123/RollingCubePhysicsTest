@@ -20,7 +20,7 @@ public class Roller : MonoBehaviour {
 		AttractCubesAround();
 
 		// Get my controller.
-		RollerCtrlState ctrl = GetRollerCtrlState();
+		RollerController ctrl = GetRollerCtrlState();
 
 		// Roll my body.
 		if (ctrl.IsLeft)
@@ -50,19 +50,19 @@ public class Roller : MonoBehaviour {
 		}
 	}
 
-	private RollerCtrlState GetRollerCtrlState()
+	private RollerController GetRollerCtrlState()
 	{
 		if (isServer)
 		{
-			if (isRedRoller) return Global.server.ctrlStateRed;
-			return Global.server.ctrlStateBlue;
+			if (isRedRoller) return Global.server.redCtrl;
+			return Global.server.blueCtrl;
 		}
 		if (isRedClient)
 		{
-			if (isRedRoller) return Global.redClient.ctrlStateRed;
-			return Global.redClient.ctrlStateBlue;
+			if (isRedRoller) return Global.redClient.redCtrl;
+			return Global.redClient.blueCtrl;
 		}
-		if (isRedRoller) return Global.blueClient.ctrlStateRed;
-		return Global.blueClient.ctrlStateBlue;
+		if (isRedRoller) return Global.blueClient.redCtrl;
+		return Global.blueClient.blueCtrl;
 	}
 }

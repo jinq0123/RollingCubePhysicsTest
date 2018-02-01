@@ -14,6 +14,28 @@ public class Client {
 		s2cChannel = s2c;
 	}
 
-	public RollerCtrlState ctrlStateRed = new RollerCtrlState();
-	public RollerCtrlState ctrlStateBlue = new RollerCtrlState();
+	// Controllers are updated by s2c channel and control 2 rollers.
+	public RollerController redCtrl = new RollerController();
+	public RollerController blueCtrl = new RollerController();
+
+	public void Left(bool yes)
+	{
+		c2sChannel.SendControlCode(ControlCode.Left, yes);
+	}
+
+	public void Right(bool yes)
+	{
+		c2sChannel.SendControlCode(ControlCode.Right, yes);
+	}
+
+	public void Up(bool yes)
+	{
+		c2sChannel.SendControlCode(ControlCode.Up, yes);
+	}
+
+	public void Down(bool yes)
+	{
+		c2sChannel.SendControlCode(ControlCode.Down, yes);
+	}
+
 }

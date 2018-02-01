@@ -17,6 +17,7 @@ public class Server {
 		chSvr2Blue = svr2Blue;
 	}
 
-	public RollerCtrlState ctrlStateRed = new RollerCtrlState();
-	public RollerCtrlState ctrlStateBlue = new RollerCtrlState();
+	// Controllers are updated by c2s channels and control 2 rollers.
+	public RollerController redCtrl = new RollerController();
+	public RollerController blueCtrl = new RollerController();
 }
