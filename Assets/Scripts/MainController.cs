@@ -15,9 +15,9 @@ public class MainController : MonoBehaviour {
 
 		int w = Screen.width;
 		int h = Screen.height;
-		serverCamera.pixelRect = new Rect(0, h / 2 - 1, w, h / 2 - 1);
+		serverCamera.pixelRect = new Rect(0, h / 2 + 1, w, h / 2 - 1);
 		redClientCamera.pixelRect = new Rect(0, 0, w / 2 - 1, h / 2 - 1);
-		blueClientCamera.pixelRect = new Rect(w / 2 - 1, 0, w / 2 - 1, h / 2 - 1);
+		blueClientCamera.pixelRect = new Rect(w / 2 + 1, 0, w / 2 - 1, h / 2 - 1);
 	}
 
 	// Update is called once per frame
