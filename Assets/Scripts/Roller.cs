@@ -45,7 +45,7 @@ public class Roller : MonoBehaviour {
 		{
 			Rigidbody rb = hit.GetComponent<Rigidbody>();
 
-			if (rb != null)
+			if (rb != null && rb != rigidbody)
 			{
 				Vector3 f = c - hit.transform.position;
 				rb.AddForce(f*10 / f.sqrMagnitude);
