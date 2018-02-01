@@ -11,8 +11,11 @@ public class MainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SpawnCubes();
+		InstantiateCubes();
 
+		// Set server view on the top,
+		// red client view on the bottom left,
+		// blue client view on the bottom rigth.
 		int w = Screen.width;
 		int h = Screen.height;
 		serverCamera.pixelRect = new Rect(0, h / 2 + 1, w, h / 2 - 1);
@@ -21,11 +24,11 @@ public class MainController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
 
-	void SpawnCubes()
+	void InstantiateCubes()
 	{
 		int width = 30;
 		for (int i = 0; i < width; i++)

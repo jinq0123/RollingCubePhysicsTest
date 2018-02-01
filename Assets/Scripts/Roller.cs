@@ -7,7 +7,6 @@ public class Roller : MonoBehaviour {
 	public new Rigidbody rigidbody;  // of roller cube
 
 	private float rollThrust = 200.0f;
-	private float jumpPower = 500.0F;
 
 	// Use this for initialization
 	void Start() {
