@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Roller : MonoBehaviour {
-	public new Rigidbody rigidbody;
-	public float rollThrust = 200.0f;
-	public float jumpPower = 500.0F;
-	public GameObject cubePrefab;
+	public bool isRed = true;  // Red client or blue client
+	public new Rigidbody rigidbody;  // of roller cube
+
+	private float rollThrust = 200.0f;
+	private float jumpPower = 500.0F;
 
 	// Use this for initialization
 	void Start() {
-		GetComponent<Renderer>().material.color = Color.red;
-		SpawnCubes();
+		GetComponent<Renderer>().material.color =
+			isRed ? Global.redColor : Global.blueColor;
 	}
 
 	void FixedUpdate() {
@@ -37,7 +38,7 @@ public class Roller : MonoBehaviour {
 			ExplodeUp();
 		}
 
-		Absorb();
+		// Absorb();
 	}
 
 	void ExplodeUp()
@@ -54,18 +55,6 @@ public class Roller : MonoBehaviour {
 			if (rb != null)
 			{
 				rb.AddExplosionForce(jumpPower, explosionPos, radius, 3.0F);
-			}
-		}
-	}
-
-	void SpawnCubes()
-	{
-		int width = 30;
-		for (int i = 0; i < width; i++)
-		{
-			for (int j = 0; j < width; j++)
-			{
-				Instantiate(cubePrefab, new Vector3(i - width / 2f, 0.2501f, j - width / 2f), Quaternion.identity);
 			}
 		}
 	}

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CollisionColor : MonoBehaviour
 {
-
 	// Use this for initialization
 	void Start()
 	{
+		ResetColor();
 	}
 
 	//// Update is called once per frame
@@ -17,19 +17,40 @@ public class CollisionColor : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.name != "Roller" &&
-			collision.gameObject.name != "Cube(Clone)")
-		{
+		Material myMaterial = GetComponent<Renderer>().material;
+		Color myColor = myMaterial.color;
+		if (myColor == Global.redColor || myColor == Global.blueColor)
 			return;
+
+		Color hitColor = GetColorOf(collision.gameObject);
+		if (hitColor != Global.redColor &&
+			hitColor != Global.blueColor)
+		{
+			return;  // hit by ground or normal cube
 		}
 
-		GetComponent<Renderer>().material.color = Color.red;
+		// Change color to hit object.
+		myMaterial.color = hitColor;
 		CancelInvoke();
-		Invoke("RecoverColor", 5f);
+		Invoke("ResetColor", 5f);
 	}
 
-	private void RecoverColor()
-    {
-		GetComponent<Renderer>().material.color = Color.white;
-    }
+	// Get color of hit object.
+	Color GetColorOf(GameObject hitObj)
+	{
+		string name = hitObj.name;
+		if (name == "RollerRed")
+			return Global.redColor;
+		if (name == "RollerBlue")
+			return Global.blueColor;
+		if (name != "Cube(Clone)")
+			return Global.normalColor;
+
+		return hitObj.GetComponent<Renderer>().material.color;
+	}
+
+	private void ResetColor()
+	{
+		GetComponent<Renderer>().material.color = Global.normalColor;
+	}
 }
