@@ -14,29 +14,6 @@ public class Client {
 		s2cChannel = s2c;
 	}
 
-	private bool isLeft;
-	private bool isRight;
-	private bool isUp;
-	private bool isDown;
-
-	public bool IsLeft
-	{
-		get { return isLeft; }
-		set { isLeft = value; }
-	}
-	public bool IsRight
-	{
-		get { return isRight; }
-		set { isRight = value; }
-	}
-	public bool IsUp
-	{
-		get { return isUp; }
-		set { isUp = value; }
-	}
-	public bool IsDown
-	{
-		get { return isDown; }
-		set { isDown = value; }
-	}
+	public RollerCtrlState ctrlStateRed = new RollerCtrlState();
+	public RollerCtrlState ctrlStateBlue = new RollerCtrlState();
 }

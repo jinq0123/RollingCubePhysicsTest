@@ -25,8 +25,10 @@ public class MainController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Client clt;
-		clt = Global.redClient;
+		RollerCtrlState clt;
+
+		// ASDW keys controls red client.
+		clt = Global.redClient.ctrlStateRed;
 		if (Input.GetKeyDown(KeyCode.A)) clt.IsLeft = true;
 		if (Input.GetKeyUp(KeyCode.A)) clt.IsLeft = false;
 		if (Input.GetKeyDown(KeyCode.D)) clt.IsRight = true;
@@ -36,7 +38,8 @@ public class MainController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.S)) clt.IsDown = true;
 		if (Input.GetKeyUp(KeyCode.S)) clt.IsDown = false;
 
-		clt = Global.blueClient;
+		// Arrow keys controls blue client.
+		clt = Global.blueClient.ctrlStateBlue;
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) clt.IsLeft = true;
 		if (Input.GetKeyUp(KeyCode.LeftArrow)) clt.IsLeft = false;
 		if (Input.GetKeyDown(KeyCode.RightArrow)) clt.IsRight = true;

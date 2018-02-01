@@ -16,4 +16,7 @@ public class Server {
 		chBlue2Svr = blue2Svr;
 		chSvr2Blue = svr2Blue;
 	}
+
+	public RollerCtrlState ctrlStateRed = new RollerCtrlState();
+	public RollerCtrlState ctrlStateBlue = new RollerCtrlState();
 }
