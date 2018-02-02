@@ -5,7 +5,7 @@ using UnityEngine;
 public class Global {
 	// Red side and blue side colors.
 	public static Color redColor = Color.red;
-	public static Color blueColor = Color.cyan;
+	public static Color blueColor = Color.blue;
 	public static Color normalColor = Color.white;
 
 	private static ChannelC2s chRed2Svr = new ChannelC2s();
