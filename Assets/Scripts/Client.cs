@@ -17,6 +17,7 @@ public class Client {
 	// is called once per frame by Global
 	public void Update()
 	{
+		// Local control input is sent to server, then received from server and applied.
 		if (isRed)
 		{
 			// ASDW keys controls red client.
@@ -41,6 +42,16 @@ public class Client {
 			if (Input.GetKeyDown(KeyCode.DownArrow)) Down(true);
 			if (Input.GetKeyUp(KeyCode.DownArrow)) Down(false);
 		}
+
+		Global.HandleCtrlCmds(s2cChannel, HandleS2cMessage);
+	}
+
+	private void HandleS2cMessage(Message msg)
+	{
+		if (msg.isRedRoller)
+			redCtrl.Update(msg.code, msg.yes);
+		else
+			blueCtrl.Update(msg.code, msg.yes);
 	}
 
 	// Control states are updated by s2c channel and control 2 rollers.
@@ -57,19 +68,27 @@ public class Client {
 
 	private void Left(bool yes)
 	{
-		c2sChannel.SendControlCode(ControlCode.Left, yes);
+		SendControlCode(ControlCode.Left, yes);
 	}
 	private void Right(bool yes)
 	{
-		c2sChannel.SendControlCode(ControlCode.Right, yes);
+		SendControlCode(ControlCode.Right, yes);
 	}
 	private void Up(bool yes)
 	{
-		c2sChannel.SendControlCode(ControlCode.Up, yes);
+		SendControlCode(ControlCode.Up, yes);
 	}
 	private void Down(bool yes)
 	{
-		c2sChannel.SendControlCode(ControlCode.Down, yes);
+		SendControlCode(ControlCode.Down, yes);
 	}
 
+	private void SendControlCode(ControlCode code, bool yes)
+	{
+		Message msg;
+		msg.isRedRoller = isRed;
+		msg.code = code;
+		msg.yes = yes;
+		c2sChannel.SendMessage(msg);
+	}
 }

@@ -22,12 +22,32 @@ public class Server {
 	{
 		// Receive control cmds from c2s channel, update control state,
 		// and send to another s2c channel.
-		Global.HandleCtrlCmds(chRed2Svr, ref redCtrl, chSvr2Blue);
-		Global.HandleCtrlCmds(chBlue2Svr, ref blueCtrl, chSvr2Red);
+		Global.HandleCtrlCmds(chRed2Svr, HandleMessageFromRed);
+		Global.HandleCtrlCmds(chBlue2Svr, HandleMessageFromBlue);
 	}
 
-	// Control states are updated by c2s channels and control 2 rollers.
-	private ControlState redCtrl;
+	private void HandleMessageFromRed(Message msg)
+	{
+		redCtrl.Update(msg.code, msg.yes);
+		msg.isRedRoller = true;
+		Broadcast(msg);
+	}
+
+	private void HandleMessageFromBlue(Message msg)
+	{
+		blueCtrl.Update(msg.code, msg.yes);
+		msg.isRedRoller = false;
+		Broadcast(msg);
+	}
+
+	private void Broadcast(Message msg)
+	{
+		chSvr2Red.SendMessage(msg);
+		chSvr2Blue.SendMessage(msg);
+	}
+
+// Control states are updated by c2s channels and control 2 rollers.
+private ControlState redCtrl;
 	private ControlState blueCtrl;
 	public ControlState RedCtrl
 	{

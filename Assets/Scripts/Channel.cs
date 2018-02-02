@@ -13,16 +13,9 @@ public class Channel
 		msgQueue = new Queue<TimeMessage>();
 	}
 
-	public void SendControlCode(ControlCode code, bool yes)
-	{
-		Message msg;
-		msg.code = code;
-		msg.yes = yes;
-		SendMessage(msg);
-	}
-
 	public bool Receive(out Message msg)
 	{
+		msg.isRedRoller = false;
 		msg.code = ControlCode.Illegal;
 		msg.yes = false;
 		if (msgQueue.Count == 0)

@@ -42,38 +42,15 @@ public class Global {
 		return blueClient.BlueCtrl;
 	}
 
-	// Receive control cmds from input channel, update control state.
-	// The server need to forward cmd to another s2c channel.
-	public static void HandleCtrlCmds(Channel chFrom, ref ControlState ctrl, Channel chTo = null)
+	public delegate void MessageHandler(Message msg);
+
+	// Receive control messages from input channel and dispose them.
+	public static void HandleCtrlCmds(Channel chFrom, MessageHandler handler)
 	{
 		Message msg;
 		while (chFrom.Receive(out msg))
 		{
-			UpdateControlState(msg, ref ctrl);
-			if (chTo != null) chTo.SendMessage(msg);
+			handler(msg);
 		}
 	}
-
-	private static void UpdateControlState(Message msg, ref ControlState ctrl)
-	{
-		switch (msg.code)
-		{
-			case ControlCode.Left:
-				ctrl.isLeft = msg.yes;
-				break;
-			case ControlCode.Right:
-				ctrl.isRight = msg.yes;
-				break;
-			case ControlCode.Up:
-				ctrl.isUp = msg.yes;
-				break;
-			case ControlCode.Down:
-				ctrl.isDown = msg.yes;
-				break;
-			default:
-				Debug.Log("Illegal control code.");
-				break;
-		}
-	}
-
 }
