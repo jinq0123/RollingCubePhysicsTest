@@ -31,12 +31,16 @@ public class MainController : MonoBehaviour {
 
 	void InstantiateCubes()
 	{
-		int width = 30;
-		for (int i = 0; i < width; i++)
-			for (int j = 0; j < width; j++)
+		int rowCount = 30;
+		int colCount = 30;
+		float cubeSize = 0.1f;
+		float rs = cubeSize * 3;  // row space
+		float cs = cubeSize * 2;  // col space
+		for (int r = -rowCount / 2; r <= rowCount / 2; r++)
+			for (int c = -colCount / 2; c < colCount / 2; c++)
 				for (int x = -100; x <= 100; x = x + 100)  // plane.x
 					Instantiate(cubePrefab, new Vector3(
-						x + i - width / 2f, 0.2501f, j - width / 2f),
+						x + rs * c, cubeSize, cs * r),
 						Quaternion.identity);
 	}
 }

@@ -8,7 +8,7 @@ public class Roller : MonoBehaviour {
 	public bool isRedRoller;  // Is roller red or blue?
 	public new Rigidbody rigidbody;  // of roller cube
 
-	private float rollThrust = 200.0f;
+	private float rollThrust = 20000.0f;
 
 	// Use this for initialization
 	void Start() {
@@ -45,7 +45,7 @@ public class Roller : MonoBehaviour {
 			if (rb != null && rb != rigidbody)
 			{
 				Vector3 f = c - hit.transform.position;
-				rb.AddForce(f*10 / f.sqrMagnitude);
+				rb.AddForce(f*5 / f.sqrMagnitude);
 			}
 		}
 	}
