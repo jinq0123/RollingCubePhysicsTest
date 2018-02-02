@@ -18,6 +18,15 @@ public class Global {
 
 	private static Server server = new Server(chRed2Svr, chSvr2Red, chBlue2Svr, chSvr2Blue);
 
+	public static void Configure(uint redPingInMs, uint bluePingInMs)
+	{
+		chRed2Svr.SetLagInMs(redPingInMs / 2);
+		chSvr2Red.SetLagInMs(redPingInMs / 2);
+
+		chBlue2Svr.SetLagInMs(bluePingInMs / 2);
+		chSvr2Blue.SetLagInMs(bluePingInMs / 2);
+	}
+
 	// UpdateClientsAndServer is called once per frame
 	public static void UpdateClientsAndServer()
 	{

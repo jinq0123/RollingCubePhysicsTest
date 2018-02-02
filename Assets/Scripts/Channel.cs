@@ -5,12 +5,17 @@ using UnityEngine;
 // Simulate the delay between client and server.
 public class Channel
 {
-	private float lag = 0;  // in seconds, half of ping time
+	private float lagSec = 0;  // in seconds, half of ping time
 	private Queue<TimeMessage> msgQueue;
 
 	public Channel()
 	{
 		msgQueue = new Queue<TimeMessage>();
+	}
+
+	public void SetLagInMs(uint lagMs)
+	{
+		lagSec = lagMs / 1000f;
 	}
 
 	public bool Receive(out Message msg)
@@ -32,7 +37,7 @@ public class Channel
 	public void SendMessage(Message msg)
 	{
 		TimeMessage timeMsg;
-		timeMsg.time = Time.time + lag;
+		timeMsg.time = Time.time + lagSec;
 		timeMsg.msg = msg;
 		msgQueue.Enqueue(timeMsg);
 	}
