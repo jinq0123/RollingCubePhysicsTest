@@ -19,17 +19,17 @@ public class Roller : MonoBehaviour {
 	void FixedUpdate() {
 		AttractCubesAround();
 
-		// Get my controller.
-		RollerController ctrl = GetRollerCtrlState();
+		// Get my control state.
+		ControlState ctrl = Global.GetControlState(isServer, isRedClient, isRedRoller);
 
 		// Roll my body.
-		if (ctrl.IsLeft)
+		if (ctrl.isLeft)
 			rigidbody.AddTorque(Vector3.forward * rollThrust);
-		if (ctrl.IsRight)
+		if (ctrl.isRight)
 			rigidbody.AddTorque(-Vector3.forward * rollThrust);
-		if (ctrl.IsUp)
+		if (ctrl.isUp)
 			rigidbody.AddTorque(Vector3.right * rollThrust);
-		if (ctrl.IsDown)
+		if (ctrl.isDown)
 			rigidbody.AddTorque(-Vector3.right * rollThrust);
 	}
 
@@ -48,21 +48,5 @@ public class Roller : MonoBehaviour {
 				rb.AddForce(f*10 / f.sqrMagnitude);
 			}
 		}
-	}
-
-	private RollerController GetRollerCtrlState()
-	{
-		if (isServer)
-		{
-			if (isRedRoller) return Global.server.redCtrl;
-			return Global.server.blueCtrl;
-		}
-		if (isRedClient)
-		{
-			if (isRedRoller) return Global.redClient.redCtrl;
-			return Global.redClient.blueCtrl;
-		}
-		if (isRedRoller) return Global.blueClient.redCtrl;
-		return Global.blueClient.blueCtrl;
 	}
 }

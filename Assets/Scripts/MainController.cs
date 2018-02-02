@@ -26,27 +26,7 @@ public class MainController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// ASDW keys controls red client.
-		Client red = Global.redClient;
-		if (Input.GetKeyDown(KeyCode.A)) red.Left(true);
-		if (Input.GetKeyUp(KeyCode.A)) red.Left(false);
-		if (Input.GetKeyDown(KeyCode.D)) red.Right(true);
-		if (Input.GetKeyUp(KeyCode.D)) red.Right(false);
-		if (Input.GetKeyDown(KeyCode.W)) red.Up(true);
-		if (Input.GetKeyUp(KeyCode.W)) red.Up(false);
-		if (Input.GetKeyDown(KeyCode.S)) red.Down(true);
-		if (Input.GetKeyUp(KeyCode.S)) red.Down(false);
-
-		// Arrow keys controls blue client.
-		Client blue = Global.blueClient;
-		if (Input.GetKeyDown(KeyCode.LeftArrow)) blue.Left(true);
-		if (Input.GetKeyUp(KeyCode.LeftArrow)) blue.Left(false);
-		if (Input.GetKeyDown(KeyCode.RightArrow)) blue.Right(true);
-		if (Input.GetKeyUp(KeyCode.RightArrow)) blue.Right(false);
-		if (Input.GetKeyDown(KeyCode.UpArrow)) blue.Up(true);
-		if (Input.GetKeyUp(KeyCode.UpArrow)) blue.Up(false);
-		if (Input.GetKeyDown(KeyCode.DownArrow)) blue.Down(true);
-		if (Input.GetKeyUp(KeyCode.DownArrow)) blue.Down(false);
+		Global.UpdateClientsAndServer();
 	}
 
 	void InstantiateCubes()

@@ -9,6 +9,18 @@ public class Channel
 	{
 		// XXX
 	}
+
+	public bool Receive(out Message msg)
+	{
+		msg.code = ControlCode.Illegal;
+		msg.yes = false;
+		return false;  // XXX
+	}
+
+	public void SendMessage(Message msg)
+	{
+		// XXX
+	}
 }
 
 public class ChannelS2c : Channel

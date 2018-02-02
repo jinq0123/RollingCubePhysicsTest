@@ -14,26 +14,60 @@ public class Client {
 		s2cChannel = s2c;
 	}
 
-	// Controllers are updated by s2c channel and control 2 rollers.
-	public RollerController redCtrl = new RollerController();
-	public RollerController blueCtrl = new RollerController();
+	// is called once per frame by Global
+	public void Update()
+	{
+		if (isRed)
+		{
+			// ASDW keys controls red client.
+			if (Input.GetKeyDown(KeyCode.A)) Left(true);
+			if (Input.GetKeyUp(KeyCode.A)) Left(false);
+			if (Input.GetKeyDown(KeyCode.D)) Right(true);
+			if (Input.GetKeyUp(KeyCode.D)) Right(false);
+			if (Input.GetKeyDown(KeyCode.W)) Up(true);
+			if (Input.GetKeyUp(KeyCode.W)) Up(false);
+			if (Input.GetKeyDown(KeyCode.S)) Down(true);
+			if (Input.GetKeyUp(KeyCode.S)) Down(false);
+		}
+		else
+		{
+			// Arrow keys controls blue client.
+			if (Input.GetKeyDown(KeyCode.LeftArrow)) Left(true);
+			if (Input.GetKeyUp(KeyCode.LeftArrow)) Left(false);
+			if (Input.GetKeyDown(KeyCode.RightArrow)) Right(true);
+			if (Input.GetKeyUp(KeyCode.RightArrow)) Right(false);
+			if (Input.GetKeyDown(KeyCode.UpArrow)) Up(true);
+			if (Input.GetKeyUp(KeyCode.UpArrow)) Up(false);
+			if (Input.GetKeyDown(KeyCode.DownArrow)) Down(true);
+			if (Input.GetKeyUp(KeyCode.DownArrow)) Down(false);
+		}
+	}
 
-	public void Left(bool yes)
+	// Control states are updated by s2c channel and control 2 rollers.
+	private ControlState redCtrl;
+	private ControlState blueCtrl;
+	public ControlState RedCtrl
+	{
+		get { return redCtrl; }
+	}
+	public ControlState BlueCtrl
+	{
+		get { return blueCtrl; }
+	}
+
+	private void Left(bool yes)
 	{
 		c2sChannel.SendControlCode(ControlCode.Left, yes);
 	}
-
-	public void Right(bool yes)
+	private void Right(bool yes)
 	{
 		c2sChannel.SendControlCode(ControlCode.Right, yes);
 	}
-
-	public void Up(bool yes)
+	private void Up(bool yes)
 	{
 		c2sChannel.SendControlCode(ControlCode.Up, yes);
 	}
-
-	public void Down(bool yes)
+	private void Down(bool yes)
 	{
 		c2sChannel.SendControlCode(ControlCode.Down, yes);
 	}

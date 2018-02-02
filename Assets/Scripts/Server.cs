@@ -17,7 +17,24 @@ public class Server {
 		chSvr2Blue = svr2Blue;
 	}
 
-	// Controllers are updated by c2s channels and control 2 rollers.
-	public RollerController redCtrl = new RollerController();
-	public RollerController blueCtrl = new RollerController();
+	// is called once per frame by Global
+	public void Update()
+	{
+		// Receive control cmds from c2s channel, update control state,
+		// and send to another s2c channel.
+		Global.HandleCtrlCmds(chRed2Svr, ref redCtrl, chSvr2Blue);
+		Global.HandleCtrlCmds(chBlue2Svr, ref blueCtrl, chSvr2Red);
+	}
+
+	// Control states are updated by c2s channels and control 2 rollers.
+	private ControlState redCtrl;
+	private ControlState blueCtrl;
+	public ControlState RedCtrl
+	{
+		get { return redCtrl; }
+	}
+	public ControlState BlueCtrl
+	{
+		get { return blueCtrl; }
+	}
 }
